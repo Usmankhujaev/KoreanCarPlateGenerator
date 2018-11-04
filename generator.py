@@ -1,4 +1,3 @@
-
 '''
 Example
 '32' '가' '0000'
@@ -36,6 +35,9 @@ The Korean Car plate is consist of three part.
 ---Last part is Number of 4 decimal.
 {0000,0001,....9999}
 '''
+
+
+
 from PIL import Image
 import pytesseract
 import argparse
@@ -67,7 +69,7 @@ fir_spe = ['%02d'%i for i in range(98, 100)]
 fir_list=[fir_pas,fir_van, fir_exp, fir_spe]
 
 def return_image(number):
-    digits_path = 'image/Number/'+number+'.png'
+    digits_path = 'image/Number/'+number+'.jpg'
     return cv2.imread(digits_path)
 
 def return_2image(number):
@@ -93,31 +95,31 @@ military_dic={'공':cv2.imread('image/Military/gong.png'),
                         '육':cv2.imread('image/Military/yuk.png')}
 
 #Second Part
-sec_per=['가', '나', '다', '라', '마', '거', '너', '더', '러', '머', 
-                    '버', '서', '어', '저', '고', '노', '도', '로', '모', '보', 
-                    '소', '오', '조', '구', '누', '두', '루', '무', '부', '수', '우', '주']
-sec_per_dic={'가':cv2.imread('image/personal/Ga.png'), '나':cv2.imread('image/personal/na.png'), 
-                    '다':cv2.imread('image/personal/da.png'),'라':cv2.imread('image/personal/la.png'), 
-                    '마':cv2.imread('image/personal/ma.png'), '거':cv2.imread('image/personal/geo.png'),
-                    '너':cv2.imread('image/personal/neo.png'), '더':cv2.imread('image/personal/deo.png'),
-                    '러':cv2.imread('image/personal/leo.png'), '머':cv2.imread('image/personal/meo.png'), 
-                    '버':cv2.imread('image/personal/beo.png'), '서':cv2.imread('image/personal/seo.png'),
-                    '어':cv2.imread('image/personal/eo.png'), '저':cv2.imread('image/personal/jeo.png'),
-                    '고':cv2.imread('image/personal/go.png'), '노':cv2.imread('image/personal/no.png'),
-                    '도':cv2.imread('image/personal/do.png'), '로':cv2.imread('image/personal/lo.png'),
-                    '모':cv2.imread('image/personal/mop.png'), '보':cv2.imread('image/personal/bo.png'),
-                    '소':cv2.imread('image/personal/so.png'), '오':cv2.imread('image/personal/o.png'), 
-                    '조':cv2.imread('image/personal/jo.png'), '구':cv2.imread('image/personal/gu.png'),
-                    '누':cv2.imread('image/personal/nu.png'), '두':cv2.imread('image/personal/du.png'), 
-                    '루':cv2.imread('image/personal/lu.png'), '무':cv2.imread('image/personal/mu.png'), 
-                    '부':cv2.imread('image/personal/bu.png'), '수':cv2.imread('image/personal/su.png'), 
-                    '우':cv2.imread('image/personal/u.png'), '주':cv2.imread('image/personal/ju.png')}
+sec_per=['Ga', 'Na', 'Da', 'La', 'Ma', 'Geo', 'Neo', 'Deo', 'Leo', 'Meo', 
+                    'Beo', 'Seo', 'Eo', 'Jeo', 'Go', 'No', 'Do', 'Lo', 'Mo', 'Bo', 
+                    'So', 'O', 'Jo', 'Gu', 'Nu', 'Du', 'Lu', 'Mu', 'Bu', 'Su', 'U', 'Ju']
+sec_per_dic={'Ga':cv2.imread('image/personal/Ga.png'), 'Na':cv2.imread('image/personal/na.png'), 
+                    'Da':cv2.imread('image/personal/da.png'),'La':cv2.imread('image/personal/la.png'), 
+                    'Ma':cv2.imread('image/personal/ma.png'), 'Geo':cv2.imread('image/personal/geo.png'),
+                    'Neo':cv2.imread('image/personal/neo.png'), 'Deo':cv2.imread('image/personal/deo.png'),
+                    'Leo':cv2.imread('image/personal/leo.png'), 'Meo':cv2.imread('image/personal/meo.png'), 
+                    'Beo':cv2.imread('image/personal/beo.png'), 'Seo':cv2.imread('image/personal/seo.png'),
+                    'Eo':cv2.imread('image/personal/eo.png'), 'Jeo':cv2.imread('image/personal/jeo.png'),
+                    'Go':cv2.imread('image/personal/go.png'), 'No':cv2.imread('image/personal/no.png'),
+                    'Do':cv2.imread('image/personal/do.png'), 'Lo':cv2.imread('image/personal/lo.png'),
+                    'Mo':cv2.imread('image/personal/mo.png'), 'Bo':cv2.imread('image/personal/bo.png'),
+                    'So':cv2.imread('image/personal/so.png'), 'O':cv2.imread('image/personal/o.png'), 
+                    'Jo':cv2.imread('image/personal/jo.png'), 'Gu':cv2.imread('image/personal/gu.png'),
+                    'Nu':cv2.imread('image/personal/nu.png'), 'Du':cv2.imread('image/personal/du.png'), 
+                    'Lu':cv2.imread('image/personal/lu.png'), 'Mu':cv2.imread('image/personal/mu.png'), 
+                    'Bu':cv2.imread('image/personal/bu.png'), 'Su':cv2.imread('image/personal/su.png'), 
+                    'U':cv2.imread('image/personal/u.png'), 'Ju':cv2.imread('image/personal/ju.png')}
 
-sec_tab=['아', '바', '사', '자']
-sec_tab_dic={'아':cv2.imread('image/Tax_Bus/a.png'), 
-                '바':cv2.imread('image/Tax_Bus/ba.png'), 
-                '사':cv2.imread('image/Tax_Bus/sa.png'), 
-                '자':cv2.imread('image/Tax_Bus/ja.png')}
+sec_tab=['A', 'Ba', 'Sa', 'Ja']
+sec_tab_dic={'A':cv2.imread('image/Tax_Bus/a.png'), 
+                'Ba':cv2.imread('image/Tax_Bus/ba.png'), 
+                'Sa':cv2.imread('image/Tax_Bus/sa.png'), 
+                'Ja':cv2.imread('image/Tax_Bus/ja.png')}
 
 sec_exp=['배']
 sec_exp_dic={'배':cv2.imread('image/Express/bae.png')}
@@ -149,35 +151,77 @@ Rental Cars :                       335x170(type5)      335x155(type2), type1(52
 #                                      L(Large)+P(Personal) or C(Commercial) + Before or After,
 #                                      R(Rental) +Before or After
 #RPB is mean Regular Personal Before(2006)
-plate_size_color = { 'RPB':[[(335,170), 'type5']],'RPA':[[(335,155), 'type2'],[(520,110),'type1']],
-                                  'RCB':[[(335,170), 'type3']], 'RCA':[[(335,170), 'type3'], [(520,110), 'type3']],
-                                  'LPB':[[(440,220), 'type5']], 'LPA':[[(440,220), 'type2']],
-                                  'LCB':[[(440,220), 'type3']], 'LCA':[[(440,220), 'type3']],
-                                  'RB':[[(335,170), 'type5']],'RA':[[(355,155), 'type2'],[(520,110), 'type1']]}
+plate_size_color = { 'RPB':[[(335,170), 'type5',(327,83)]],
+                                  'RPA':[[(335,155), 'type2', (327,83)],[(520,110),'type1',(418,105)]],
+                                  'RCB':[[(335,170), 'type3',(308, 92)]], 
+                                  'RCA':[[(335,170), 'type3',(308, 92)], [(520,110), 'type3', (456,83)]],
+                                  'LPB':[[(440,220), 'type5',(418,105)]], 
+                                  'LPA':[[(440,220), 'type2',(418,105)]],
+                                  'LCB':[[(440,220), 'type3', (401,116)]], 
+                                  'LCA':[[(440,220), 'type3',(401,116)]],
+                                  'RB':[[(335,170), 'type5',(308, 92)]],
+                                  'RA':[[(355,155), 'type2',(364,83)],[(520,110), 'type1',(418,105)]]}
 
 def write_img(name, image):
-    print("Saved..\n %s%s.jpg" % folder, name)
+    print("Saved..\n %s\\%s\\%s.jpg" % (os.getcwd(), folder, name))
+    saveFolder = os.getcwd()+'\\'+folder +'\\'
     #존재하면 다른이름.
-    cv2.imwrite(folder+name+'.jpg', image)
+    cnt =0
+    while os.path.isfile(saveFolder+str(cnt)+name+'.jpg'):
+        print('Files Exist')
+        cnt+=1
+    print("Image Writting..")
+    cv2.imwrite(saveFolder+str(cnt)+name+'.jpg', image)
+    # cv2.imwrite(name+'.jpg', image)
+
+def image_merge(numImg, plImg):
+    #Number = Img1, #Plate = Img2
+    nh, nw, nc = numImg.shape
+    ph, pw, pc = plImg.shape
+    ## Image Addtion with Alpha
+    x_offset = (pw-nw)/2
+    y_offset = (ph-nh)/2
+    
+    # Load two images
+    img1 = plImg
+    img2 = numImg
+    # I want to put logo on top-left corner, So I create a ROI
+    rows,cols,channels = img2.shape
+    roi = img1[0:rows, 0:cols ]
+    # Now create a mask of logo and create its inverse mask also
+    img2gray = cv2.cvtColor(img2,cv2.COLOR_BGR2GRAY)
+    ret, mask = cv2.threshold(img2gray, 10, 255, cv2.THRESH_BINARY)
+    mask_inv = cv2.bitwise_not(mask)
+    # Now black-out the area of logo in ROI
+    img1_bg = cv2.bitwise_and(roi,roi,mask = mask_inv)
+    # Take only region of logo from logo image.
+    img2_fg = cv2.bitwise_and(img2,img2,mask = mask)
+    # Put logo in ROI and modify the main image
+    dst = cv2.add(img1_bg,img2_fg)
+    img1[0:rows, 0:cols ] = dst
+    
+    return dst
 
 def selectPlateType(name, ptype, firstImg, secondImg, thirdImg):
-    print(ptype)
+    print("ptype is :", ptype)
     psc = plate_size_color[ptype]
     for i in psc:
-        img = plate_type[i[1]]  #type Select
+        img = plate_type[i[1]]  #type Select (BackGround)
         img = cv2.resize(img, i[0]) #Resizing Image
         # cv2.imshow('test', img) 
-        f = cv2.hconcat(firstImg)
+        f = cv2.hconcat(firstImg)   #Fore Ground
         t = cv2.hconcat(thirdImg)
         res = cv2.hconcat([f,secondImg, t])
-        res = cv2.resize(res, (319,83))
-        #46.4에서 시작
+        res = cv2.resize(res, i[2])
+        print("Plate Size is ", img.shape)
+        #Number = Img1, #Plate = Img2
+        print("Number Size is :" , res.shape)
+        # res = image_merge(res, img)
         # cv2.imshow('test', res)
-        # while cv2.waitKey(10)==ord('q'):
+        # while cv2.waitKey()==ord('q'):
         #     continue
         # Write Image
-        cv2.imwrite("example.png", res)
-        # write_img(name, res)
+        write_img(name, res)
 
 def combine(first, second, third, ptype):
     print('Combine')
