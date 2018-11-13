@@ -37,8 +37,6 @@ The Korean Car plate is consist of three part.
 {0000,0001,....9999}
 '''
 
-
-
 from PIL import Image
 import pytesseract
 import argparse
@@ -51,11 +49,11 @@ import sys
 ap = argparse.ArgumentParser()
 ap.add_argument("-d", "--dir", required=True,
 	help="path to Output image to be folder")
-ap.add_argument("-k", "--kind", type=str, default=None,
+ap.add_argument("-k", "--kind", require=True, type=str, default=None,
 	help="type of specification to be done")
-ap.add_argument("-n", "--num", type=int, default=1,
+ap.add_argument("-n", "--num", require= True, type=int, default=1,
 	help="Number of Car plate Data")
-ap.add_argument("-t", "--type", type=str, default='RPA',
+ap.add_argument("-t", "--type", require=True, type=str, default='RPA',
 	help="Number of Car plate Data")
 
 args = vars(ap.parse_args())
