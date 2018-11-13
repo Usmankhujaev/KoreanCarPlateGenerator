@@ -12,6 +12,7 @@ The Korean Car plate is consist of three part.
 *Personal or Non-Commercial (Total 32)
 {가, 나, 다, 라, 마, 거, 너, 더, 러, 머, 버, 서, 어, 저, 고, 노, 도, 로, 모, 보, 소, 오, 조, 구, 누, 
 두, 루, 무, 부, 수, 우, 주}
+
 *Commercial (Taxi and Bus)
 {아, 바, 사, 자}
 *Commercial Express
@@ -98,22 +99,22 @@ military_dic={'공':cv2.imread('image/Military/gong.png'),
 sec_per=['Ga', 'Na', 'Da', 'La', 'Ma', 'Geo', 'Neo', 'Deo', 'Leo', 'Meo', 
                     'Beo', 'Seo', 'Eo', 'Jeo', 'Go', 'No', 'Do', 'Lo', 'Mo', 'Bo', 
                     'So', 'O', 'Jo', 'Gu', 'Nu', 'Du', 'Lu', 'Mu', 'Bu', 'Su', 'U', 'Ju']
-sec_per_dic={'Ga':cv2.imread('image/personal/Ga.png'), 'Na':cv2.imread('image/personal/na.png'), 
-                    'Da':cv2.imread('image/personal/da.png'),'La':cv2.imread('image/personal/la.png'), 
-                    'Ma':cv2.imread('image/personal/ma.png'), 'Geo':cv2.imread('image/personal/geo.png'),
-                    'Neo':cv2.imread('image/personal/neo.png'), 'Deo':cv2.imread('image/personal/deo.png'),
-                    'Leo':cv2.imread('image/personal/leo.png'), 'Meo':cv2.imread('image/personal/meo.png'), 
-                    'Beo':cv2.imread('image/personal/beo.png'), 'Seo':cv2.imread('image/personal/seo.png'),
-                    'Eo':cv2.imread('image/personal/eo.png'), 'Jeo':cv2.imread('image/personal/jeo.png'),
-                    'Go':cv2.imread('image/personal/go.png'), 'No':cv2.imread('image/personal/no.png'),
-                    'Do':cv2.imread('image/personal/do.png'), 'Lo':cv2.imread('image/personal/lo.png'),
-                    'Mo':cv2.imread('image/personal/mo.png'), 'Bo':cv2.imread('image/personal/bo.png'),
-                    'So':cv2.imread('image/personal/so.png'), 'O':cv2.imread('image/personal/o.png'), 
-                    'Jo':cv2.imread('image/personal/jo.png'), 'Gu':cv2.imread('image/personal/gu.png'),
-                    'Nu':cv2.imread('image/personal/nu.png'), 'Du':cv2.imread('image/personal/du.png'), 
-                    'Lu':cv2.imread('image/personal/lu.png'), 'Mu':cv2.imread('image/personal/mu.png'), 
-                    'Bu':cv2.imread('image/personal/bu.png'), 'Su':cv2.imread('image/personal/su.png'), 
-                    'U':cv2.imread('image/personal/u.png'), 'Ju':cv2.imread('image/personal/ju.png')}
+sec_per_dic={'Ga':cv2.imread('image/personal/Ga.jpg'), 'Na':cv2.imread('image/personal/na.jpg'), 
+                    'Da':cv2.imread('image/personal/da.jpg'),'La':cv2.imread('image/personal/la.jpg'), 
+                    'Ma':cv2.imread('image/personal/ma.jpg'), 'Geo':cv2.imread('image/personal/geo.jpg'),
+                    'Neo':cv2.imread('image/personal/neo.jpg'), 'Deo':cv2.imread('image/personal/deo.jpg'),
+                    'Leo':cv2.imread('image/personal/leo.jpg'), 'Meo':cv2.imread('image/personal/meo.jpg'), 
+                    'Beo':cv2.imread('image/personal/beo.jpg'), 'Seo':cv2.imread('image/personal/seo.jpg'),
+                    'Eo':cv2.imread('image/personal/eo.jpg'), 'Jeo':cv2.imread('image/personal/jeo.jpg'),
+                    'Go':cv2.imread('image/personal/go.jpg'), 'No':cv2.imread('image/personal/no.jpg'),
+                    'Do':cv2.imread('image/personal/do.jpg'), 'Lo':cv2.imread('image/personal/lo.jpg'),
+                    'Mo':cv2.imread('image/personal/mo.jpg'), 'Bo':cv2.imread('image/personal/bo.jpg'),
+                    'So':cv2.imread('image/personal/so.jpg'), 'O':cv2.imread('image/personal/o.jpg'), 
+                    'Jo':cv2.imread('image/personal/jo.jpg'), 'Gu':cv2.imread('image/personal/gu.jpg'),
+                    'Nu':cv2.imread('image/personal/nu.jpg'), 'Du':cv2.imread('image/personal/du.jpg'), 
+                    'Lu':cv2.imread('image/personal/lu.jpg'), 'Mu':cv2.imread('image/personal/mu.jpg'), 
+                    'Bu':cv2.imread('image/personal/bu.jpg'), 'Su':cv2.imread('image/personal/su.jpg'), 
+                    'U':cv2.imread('image/personal/u.jpg'), 'Ju':cv2.imread('image/personal/ju.jpg')}
 
 sec_tab=['A', 'Ba', 'Sa', 'Ja']
 sec_tab_dic={'A':cv2.imread('image/Tax_Bus/a.png'), 
