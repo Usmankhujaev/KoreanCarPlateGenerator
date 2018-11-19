@@ -2,7 +2,7 @@ import os
 import lmdb # install lmdb by "pip install lmdb"
 import cv2
 import numpy as np
-
+import argparse
 
 def checkImageIsValid(imageBin):
     if imageBin is None:
