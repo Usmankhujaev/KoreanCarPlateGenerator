@@ -28,20 +28,89 @@ class LicensePlate:
                                 "충북":"G", "부산":"H", "울산":"I", "대구":"J", "경북":"K", "경남":"L",
                                 "전남":"M", "광주":"N", "전북":"O", "제주":"P"}
 
-        self.kongToHangul = {"a":"dk", "eo":"dj", "o":"dh", "u":"dn", "ba":"qk", "beo":"qj", "bo":"qh", "bu":"qn",
-                                "da":"ek", "deo":"ej", "do":"eh", "du":"en", "ga":"rk", "geo":"rj", "go":"rh", "gu":"rn",
-                                "ja":"wk", "jeo":"wj", "jo":"wh", "ju":"wn", "ma":"ak", "meo":"aj", "mo":"ah", "mu":"an",
-                                "na":"sk", "neo":"sj", "no":"sh", "nu":"sn", "la":"fk", "leo":"fj", "lo":"fh", "lu":"fn",
-                                "sa":"tk", "seo":"tj", "so":"th", "su":"tn", "heo":"gj","ha":"gk","ho":"gh", "reo":"fj"}
+        self.kongToHangul = {"dk":"a", "dj":"eo", "dh":"o", "dn":"u", "qk":"ba", "qj":"beo", "qh":"bo", "qn":"bu",
+                                "ek":"da", "ej":"deo", "eh":"do", "en":"du", "rk":"ga", "rj":"geo", "rh":"go", "rn":"gu",
+                                "wk":"ja", "wj":"jeo", "wh":"jo", "wn":"ju", "ak":"ma", "aj":"meo", "ah":"mo", "an":"mu",
+                                "sk":"na", "sj":"neo", "sh":"no", "sn":"nu", "fk":"la", "fj":"leo", "fh":"lo", "fn":"lu",
+                                "tk":"sa", "tj":"seo", "th":"so", "tn":"su", "gj":"heo","gk":"ha","gh":"ho", "fj":"reo"}
 
-        self.dictToHangul = {"dk": "아", "dj": "어", "dh": "오", "dn": "우", "qk": "바", "qj": "버", "qh": "보", "qn": "부",
-                                "ek": "다", "ej": "더", "eh": "도", "en": "두", "rk": "가", "rj": "거", "rh": "고", "rn": "구",
-                                "wk": "자", "wj": "저", "wh": "조", "wn": "주", "ak": "마", "aj": "머", "ah": "모", "an": "무",
-                                "sk": "나", "sj": "너", "sh": "노", "sn": "누", "fk": "라", "fj": "러", "fh": "로", "fn": "루",
-                                "tk": "사", "tj": "서", "th": "소", "tn": "수", "gj": "허"}
+        self.dictToHangul = {"a": "아", "eo": "어", "o": "오", "u": "우", "ba": "바", "beo": "버", "bo": "보", "bu": "부",
+                                "da": "다", "deo": "더", "do": "도", "du": "두", "ga": "가", "geo": "거", "go": "고", "gu": "구",
+                                "ja": "자", "jeo": "저", "jo": "조", "ju": "주", "ma": "마", "meo": "머", "mo": "모", "mu": "무",
+                                "na": "나", "neo": "너", "no": "노", "nu": "누", "la": "라", "leo": "러", "lo": "로", "lu": "루",
+                                "sa": "사", "seo": "서", "seo": "소", "su": "수", "ha": "허"}
 
     def regularPersonalAfter1(self):
-        # Width 335mm - 1081 px
+        # Width 520mm - 1679 px
+        self.img_width = 1679
+        # Height 110mm - 355px
+        self.img_height = 355
+        # 56mm - 181px
+        self.num_width = 181
+        # 83mm - 268px
+        self.num_height = 268
+        # 95mm - 307px
+        self.hg_width = 307
+        # 83mm - 268px
+        self.hg_height = 268
+        # (13.5mm, 44.0mm) - (44px, 142px)
+        self.start_coord = [(44,142), 
+                                (44, 142+self.num_width), 
+                                (44, 142+self.num_width*2),
+                                (44, 142+self.num_width*2+self.hg_width),
+                                (44, 142+self.num_width*3+self.hg_width),
+                                (44, 142+self.num_width*4+self.hg_width),
+                                (44, 142+self.num_width*5+self.hg_width)]
+        
+        self.digit_path = {
+            "0":cv2.imread("image/type1/0.jpg"),
+            "1":cv2.imread("image/type1/1.jpg"),
+            "2":cv2.imread("image/type1/2.jpg"),
+            "3":cv2.imread("image/type1/3.jpg"),
+            "4":cv2.imread("image/type1/4.jpg"),
+            "5":cv2.imread("image/type1/5.jpg"),
+            "6":cv2.imread("image/type1/6.jpg"),
+            "7":cv2.imread("image/type1/7.jpg"),
+            "8":cv2.imread("image/type1/8.jpg"),
+            "9":cv2.imread("image/type1/9.jpg")
+        }
+        self.hg_path={
+            "qj":cv2.imread("image/type1/beo.jpg"),
+            "qn":cv2.imread("image/type1/bu.jpg"),
+            "ek":cv2.imread("image/type1/da.jpg"),
+            "ej":cv2.imread("image/type1/deo.jpg"),
+            "eh":cv2.imread("image/type1/do.jpg"),
+            "en":cv2.imread("image/type1/du.jpg"),
+            "dj":cv2.imread("image/type1/eo.jpg"),
+            "rk":cv2.imread("image/type1/ga.jpg"),
+            "rj":cv2.imread("image/type1/geo.jpg"),
+            "rh":cv2.imread("image/type1/go.jpg"),
+            "rn":cv2.imread("image/type1/gu.jpg"),
+            "gk":cv2.imread("image/type1/ha.jpg"),
+            "gj":cv2.imread("image/type1/heo.jpg"),
+            "gh":cv2.imread("image/type1/ho.jpg"),
+            "wj":cv2.imread("image/type1/jeo.jpg"),
+            "wn":cv2.imread("image/type1/ju.jpg"),
+            "fk":cv2.imread("image/type1/la.jpg"),
+            "fj":cv2.imread("image/type1/leo.jpg"),
+            "fh":cv2.imread("image/type1/lo.jpg"),
+            "fn":cv2.imread("image/type1/lu.jpg"),
+            "ak":cv2.imread("image/type1/ma.jpg"),
+            "aj":cv2.imread("image/type1/meo.jpg"),
+            "ah":cv2.imread("image/type1/mo.jpg"),
+            "an":cv2.imread("image/type1/mu.jpg"),
+            "sk":cv2.imread("image/type1/na.jpg"),
+            "sj":cv2.imread("image/type1/neo.jpg"),
+            "sh":cv2.imread("image/type1/no.jpg"),
+            "sn":cv2.imread("image/type1/nu.jpg"),
+            "dh":cv2.imread("image/type1/o.jpg"),
+            "tj":cv2.imread("image/type1/seo.jpg"),
+            "tn":cv2.imread("image/type1/su.jpg"),
+            "dn":cv2.imread("image/type1/u.jpg")
+        }
+
+    def regularPersonalAfter2(self):
+       # Width 335mm - 1081 px
         self.img_width = 1081
         # Height 155mm - 500px
         self.img_height = 500
@@ -63,73 +132,6 @@ class LicensePlate:
                                         (149, 13+self.num_width*5+self.hg_width)]
 
         self.digit_path = {
-            "0":cv2.imread("image/type1/0.jpg"),
-            "1":cv2.imread("image/type1/1.jpg"),
-            "2":cv2.imread("image/type1/2.jpg"),
-            "3":cv2.imread("image/type1/3.jpg"),
-            "4":cv2.imread("image/type1/4.jpg"),
-            "5":cv2.imread("image/type1/5.jpg"),
-            "6":cv2.imread("image/type1/6.jpg"),
-            "7":cv2.imread("image/type1/7.jpg"),
-            "8":cv2.imread("image/type1/8.jpg"),
-            "9":cv2.imread("image/type1/9.jpg")
-        }
-        self.hg_path={
-            "beo":cv2.imread("image/type1/beo.jpg"),
-            "bu":cv2.imread("image/type1/bu.jpg"),
-            "da":cv2.imread("image/type1/da.jpg"),
-            "deo":cv2.imread("image/type1/deo.jpg"),
-            "do":cv2.imread("image/type1/do.jpg"),
-            "du":cv2.imread("image/type1/du.jpg"),
-            "eo":cv2.imread("image/type1/eo.jpg"),
-            "ga":cv2.imread("image/type1/ga.jpg"),
-            "geo":cv2.imread("image/type1/geo.jpg"),
-            "go":cv2.imread("image/type1/go.jpg"),
-            "gu":cv2.imread("image/type1/gu.jpg"),
-            "ha":cv2.imread("image/type1/ha.jpg"),
-            "heo":cv2.imread("image/type1/heo.jpg"),
-            "ho":cv2.imread("image/type1/ho.jpg"),
-            "jeo":cv2.imread("image/type1/jeo.jpg"),
-            "ju":cv2.imread("image/type1/ju.jpg"),
-            "la":cv2.imread("image/type1/la.jpg"),
-            "leo":cv2.imread("image/type1/leo.jpg"),
-            "lo":cv2.imread("image/type1/lo.jpg"),
-            "lu":cv2.imread("image/type1/lu.jpg"),
-            "ma":cv2.imread("image/type1/ma.jpg"),
-            "meo":cv2.imread("image/type1/meo.jpg"),
-            "mo":cv2.imread("image/type1/mo.jpg"),
-            "mu":cv2.imread("image/type1/mu.jpg"),
-            "na":cv2.imread("image/type1/na.jpg"),
-            "neo":cv2.imread("image/type1/neo.jpg"),
-            "no":cv2.imread("image/type1/no.jpg"),
-            "nu":cv2.imread("image/type1/nu.jpg"),
-            "seo":cv2.imread("image/type1/seo.jpg"),
-            "su":cv2.imread("image/type1/su.jpg"),
-            "u":cv2.imread("image/type1/u.jpg")
-        }
-
-    def regularPersonalAfter2(self):
-        # Width 520mm - 1679 px
-        self.img_width = 1679
-        # Height 110mm - 355px
-        self.img_height = 355
-        # 56mm - 181px
-        self.num_width = 181
-        # 83mm - 268px
-        self.num_height = 268
-        # 95mm - 307px
-        self.hg_width = 307
-        # 83mm - 268px
-        self.hg_height = 268
-        # (13.5mm, 44.0mm) - (44px, 142px)
-        self.start_coord = [(44,142), 
-                                (44, 142+self.num_width), 
-                                (44, 142+self.num_width*2),
-                                (44, 142+self.num_width*2+self.hg_width),
-                                (44, 142+self.num_width*3+self.hg_width),
-                                (44, 142+self.num_width*4+self.hg_width),
-                                (44, 142+self.num_width*5+self.hg_width)]
-        self.digit_path = {
             "0":cv2.imread("image/type2/0.jpg"),
             "1":cv2.imread("image/type2/1.jpg"),
             "2":cv2.imread("image/type2/2.jpg"),
@@ -142,38 +144,38 @@ class LicensePlate:
             "9":cv2.imread("image/type2/9.jpg")
         }
         self.hg_path={
-            "beo":cv2.imread("image/type2/beo.jpg"),
-            "bo":cv2.imread("image/type2/bo.jpg"),
-            "bu":cv2.imread("image/type2/bu.jpg"),
-            "da":cv2.imread("image/type2/da.jpg"),
-            "deo":cv2.imread("image/type2/deo.jpg"),
-            "do":cv2.imread("image/type2/do.jpg"),
-            "du":cv2.imread("image/type2/du.jpg"),
-            "eo":cv2.imread("image/type2/eo.jpg"),
-            "ga":cv2.imread("image/type2/ga.jpg"),
-            "geo":cv2.imread("image/type2/geo.jpg"),
-            "go":cv2.imread("image/type2/go.jpg"),
-            "gu":cv2.imread("image/type2/gu.jpg"),
-            "heo":cv2.imread("image/type2/heo.jpg"),
-            "jeo":cv2.imread("image/type2/jeo.jpg"),
-            "ju":cv2.imread("image/type2/ju.jpg"),
-            "la":cv2.imread("image/type2/la.jpg"),
-            "leo":cv2.imread("image/type2/leo.jpg"),
-            "lo":cv2.imread("image/type2/lo.jpg"),
-            "lu":cv2.imread("image/type2/lu.jpg"),
-            "ma":cv2.imread("image/type2/ma.jpg"),
-            "meo":cv2.imread("image/type2/meo.jpg"),
-            "mo":cv2.imread("image/type2/mo.jpg"),
-            "mu":cv2.imread("image/type2/mu.jpg"),
-            "na":cv2.imread("image/type2/na.jpg"),
-            "neo":cv2.imread("image/type2/neo.jpg"),
-            "no":cv2.imread("image/type2/no.jpg"),
-            "nu":cv2.imread("image/type2/nu.jpg"),
-            "o":cv2.imread("image/type2/o.jpg"),
-            "seo":cv2.imread("image/type2/seo.jpg"),
-            "so":cv2.imread("image/type2/so.jpg"),
-            "su":cv2.imread("image/type2/su.jpg"),
-            "u":cv2.imread("image/type2/u.jpg")
+            "qj":cv2.imread("image/type2/beo.jpg"),
+            "qn":cv2.imread("image/type2/bu.jpg"),
+            "ek":cv2.imread("image/type2/da.jpg"),
+            "ej":cv2.imread("image/type2/deo.jpg"),
+            "eh":cv2.imread("image/type2/do.jpg"),
+            "en":cv2.imread("image/type2/du.jpg"),
+            "dj":cv2.imread("image/type2/eo.jpg"),
+            "rk":cv2.imread("image/type2/ga.jpg"),
+            "rj":cv2.imread("image/type2/geo.jpg"),
+            "rh":cv2.imread("image/type2/go.jpg"),
+            "rn":cv2.imread("image/type2/gu.jpg"),
+            "gk":cv2.imread("image/type2/ha.jpg"),
+            "gj":cv2.imread("image/type2/heo.jpg"),
+            "gh":cv2.imread("image/type2/ho.jpg"),
+            "wj":cv2.imread("image/type2/jeo.jpg"),
+            "wn":cv2.imread("image/type2/ju.jpg"),
+            "fk":cv2.imread("image/type2/la.jpg"),
+            "fj":cv2.imread("image/type2/leo.jpg"),
+            "fh":cv2.imread("image/type2/lo.jpg"),
+            "fn":cv2.imread("image/type2/lu.jpg"),
+            "ak":cv2.imread("image/type2/ma.jpg"),
+            "aj":cv2.imread("image/type2/meo.jpg"),
+            "ah":cv2.imread("image/type2/mo.jpg"),
+            "an":cv2.imread("image/type2/mu.jpg"),
+            "sk":cv2.imread("image/type2/na.jpg"),
+            "sj":cv2.imread("image/type2/neo.jpg"),
+            "sh":cv2.imread("image/type2/no.jpg"),
+            "sn":cv2.imread("image/type2/nu.jpg"),
+            "dh":cv2.imread("image/type2/o.jpg"),
+            "tj":cv2.imread("image/type2/seo.jpg"),
+            "tn":cv2.imread("image/type2/su.jpg"),
+            "dn":cv2.imread("image/type2/u.jpg")
         }
 
     def regularCommercialAfter1(self):
@@ -242,10 +244,10 @@ class LicensePlate:
             "9":cv2.imread("image/type3/9.jpg")
         }
         self.hg_path={
-            "a":cv2.imread("image/type3/a.jpg"),
-            "ba":cv2.imread("image/type3/ba.jpg"),
-            "sa":cv2.imread("image/type3/sa.jpg"),
-            "ja":cv2.imread("image/type3/ja.jpg")
+            "dk":cv2.imread("image/type3/a.jpg"),
+            "qk":cv2.imread("image/type3/ba.jpg"),
+            "tk":cv2.imread("image/type3/sa.jpg"),
+            "wk":cv2.imread("image/type3/ja.jpg")
         }
     
     def regularCommercialAfter2(self):
@@ -306,10 +308,10 @@ class LicensePlate:
             "9":cv2.imread("image/type4/9.jpg")
         }
         self.hg_path={
-            "a":cv2.imread("image/type4/a.jpg"),
-            "ba":cv2.imread("image/type4/ba.jpg"),
-            "sa":cv2.imread("image/type4/sa.jpg"),
-            "ja":cv2.imread("image/type4/ja.jpg")
+            "dk":cv2.imread("image/type4/a.jpg"),
+            "qk":cv2.imread("image/type4/ba.jpg"),
+            "tk":cv2.imread("image/type4/sa.jpg"),
+            "wk":cv2.imread("image/type4/ja.jpg")
         }
 
     def largeVehiclesPersonalAfter1(self):
@@ -346,39 +348,38 @@ class LicensePlate:
             "9":cv2.imread("image/type5/9.jpg")
         }
         self.hg_path={
-            "beo":cv2.imread("image/type5/beo.jpg"),
-            "bo":cv2.imread("image/type5/bo.jpg"),
-            "bu":cv2.imread("image/type5/bu.jpg"),
-            "da":cv2.imread("image/type5/da.jpg"),
-            "deo":cv2.imread("image/type5/deo.jpg"),
-            "do":cv2.imread("image/type5/do.jpg"),
-            "du":cv2.imread("image/type5/du.jpg"),
-            "eo":cv2.imread("image/type5/eo.jpg"),
-            "ga":cv2.imread("image/type5/ga.jpg"),
-            "geo":cv2.imread("image/type5/geo.jpg"),
-            "go":cv2.imread("image/type5/go.jpg"),
-            "gu":cv2.imread("image/type5/gu.jpg"),
-            "heo":cv2.imread("image/type5/heo.jpg"),
-            "jeo":cv2.imread("image/type5/jeo.jpg"),
-            "jo":cv2.imread("image/type5/jo.jpg"),
-            "ju":cv2.imread("image/type5/ju.jpg"),
-            "la":cv2.imread("image/type5/la.jpg"),
-            "lo":cv2.imread("image/type5/lo.jpg"),
-            "lu":cv2.imread("image/type5/lu.jpg"),
-            "ma":cv2.imread("image/type5/ma.jpg"),
-            "meo":cv2.imread("image/type5/meo.jpg"),
-            "mo":cv2.imread("image/type5/mo.jpg"),
-            "mu":cv2.imread("image/type5/mu.jpg"),
-            "na":cv2.imread("image/type5/na.jpg"),
-            "neo":cv2.imread("image/type5/neo.jpg"),
-            "no":cv2.imread("image/type5/no.jpg"),
-            "nu":cv2.imread("image/type5/nu.jpg"),
-            "o":cv2.imread("image/type5/o.jpg"),
-            "reo":cv2.imread("image/type5/reo.jpg"),
-            "seo":cv2.imread("image/type5/seo.jpg"),
-            "so":cv2.imread("image/type5/so.jpg"),
-            "su":cv2.imread("image/type5/su.jpg"),
-            "u":cv2.imread("image/type5/u.jpg")
+            "qj":cv2.imread("image/type5/beo.jpg"),
+            "qn":cv2.imread("image/type5/bu.jpg"),
+            "ek":cv2.imread("image/type5/da.jpg"),
+            "ej":cv2.imread("image/type5/deo.jpg"),
+            "eh":cv2.imread("image/type5/do.jpg"),
+            "en":cv2.imread("image/type5/du.jpg"),
+            "dj":cv2.imread("image/type5/eo.jpg"),
+            "rk":cv2.imread("image/type5/ga.jpg"),
+            "rj":cv2.imread("image/type5/geo.jpg"),
+            "rh":cv2.imread("image/type5/go.jpg"),
+            "rn":cv2.imread("image/type5/gu.jpg"),
+            "gk":cv2.imread("image/type5/ha.jpg"),
+            "gj":cv2.imread("image/type5/heo.jpg"),
+            "gh":cv2.imread("image/type5/ho.jpg"),
+            "wj":cv2.imread("image/type5/jeo.jpg"),
+            "wn":cv2.imread("image/type5/ju.jpg"),
+            "fk":cv2.imread("image/type5/la.jpg"),
+            "fj":cv2.imread("image/type5/leo.jpg"),
+            "fh":cv2.imread("image/type5/lo.jpg"),
+            "fn":cv2.imread("image/type5/lu.jpg"),
+            "ak":cv2.imread("image/type5/ma.jpg"),
+            "aj":cv2.imread("image/type5/meo.jpg"),
+            "ah":cv2.imread("image/type5/mo.jpg"),
+            "an":cv2.imread("image/type5/mu.jpg"),
+            "sk":cv2.imread("image/type5/na.jpg"),
+            "sj":cv2.imread("image/type5/neo.jpg"),
+            "sh":cv2.imread("image/type5/no.jpg"),
+            "sn":cv2.imread("image/type5/nu.jpg"),
+            "dh":cv2.imread("image/type5/o.jpg"),
+            "tj":cv2.imread("image/type5/seo.jpg"),
+            "tn":cv2.imread("image/type5/su.jpg"),
+            "dn":cv2.imread("image/type5/u.jpg")
         }
 
     def largeVehiclesCommercialAfter1(self):
@@ -452,10 +453,10 @@ class LicensePlate:
             "9":cv2.imread("image/type6/9.jpg")
         }
         self.hg_path={
-            "a":cv2.imread("image/type6/a.jpg"),
-            "ba":cv2.imread("image/type6/ba.jpg"),
-            "sa":cv2.imread("image/type6/sa.jpg"),
-            "ja":cv2.imread("image/type6/ja.jpg")
+            "dk":cv2.imread("image/type6/a.jpg"),
+            "qk":cv2.imread("image/type6/ba.jpg"),
+            "tk":cv2.imread("image/type6/sa.jpg"),
+            "wk":cv2.imread("image/type6/ja.jpg")
         }
         
     def create_image(self, height, width, channel, rgb_color=(0,0,0)):
@@ -481,7 +482,10 @@ class LicensePlate:
         hangul_k, hangul_v = random.choice(list(self.hg_path.items()))
         #Dict -> konglish to Hangul
         hangul_k = self.kongToHangul[hangul_k]
-        digit_list[2] = cv2.resize(hangul_v, (self.hg_width, self.hg_height))
+        try:
+            digit_list[2] = cv2.resize(hangul_v, (self.hg_width, self.hg_height))
+        except cv2.error:
+            print('resize problem')
         num_list[2] = hangul_k
         for i in range(7):
             x1, y1 = self.start_coord[i]
