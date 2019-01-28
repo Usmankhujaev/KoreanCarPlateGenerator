@@ -6,7 +6,7 @@ We separated by types accordingly to their shape and background color.
 You can see the types in following image
 
 The license plates of Korea are as follows.
-![Alt text](/image/table.jpg)
+![Alt text](/table.jpg)
 
 Please read the Notification_on_standards_such_as_registration_plates_for_Cars.pdf for detailed legal information.
 
