@@ -1,6 +1,6 @@
 ## Korean Car Plate Generator
 
-This project is randomly generate synthetic Korean car license plates.
+This project randomly generates synthetic images of Korean car license plates.
 We separated by types accordingly to their shape and background color.
 You can see the types in following image
 
