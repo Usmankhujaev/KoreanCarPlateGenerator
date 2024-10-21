@@ -9,8 +9,8 @@ This project was submitted to the DCAI Conference in 2019
 | Authors   | Authorship  |  Occupation  |
 |-----------|-------------|-------------|
 | Saidrasul Usmankhujaev  | first author | MS student |
-| Lee Seonwoo | co-author  | Designer    | PhD student |
-| Kwon Jangwoo | corresponding author  | Profesor    |
+| Lee Seonwoo | co-author  | PhD student |
+| Kwon Jangwoo | corresponding author  | Profesor   |
 
 
 ## Features
