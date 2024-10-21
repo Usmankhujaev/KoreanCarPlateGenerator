@@ -6,8 +6,9 @@ You can see the types in the following image
 
 ## Features
 - This project was developed as part of the [Korean License Plate Recognition with Combined Neural Networks](https://www.semanticscholar.org/paper/Korean-License-Plate-Recognition-System-Using-Usmankhujaev-Lee/6e246630e4d6000c8cefcb57110916522db57aea)
-- Random generation done with the help of OpenCV library
+- Random generation is done with the help of the OpenCV library
 - Images are placed by the specs of the image
+
 ![Specs](/images/Character-position-on-a-license-plate.png)
   
 ## The license plates of Korea are as follows.
