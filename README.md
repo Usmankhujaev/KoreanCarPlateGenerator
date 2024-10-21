@@ -37,3 +37,15 @@ Before running a code, create a folder named **train/test**. Run the Python code
 ```bash
 python licensePlateType.py -t train/test -n int(number) -p int(Type(1~6))
 ```
+
+
+## Citation
+
+```bash
+@inproceedings{Usmankhujaev2019KoreanLP,
+  title={Korean License Plate Recognition System Using Combined Neural Networks},
+  author={Saidrasul Usmankhujaev and Sunwoo Lee and Jangwoo Kwon},
+  booktitle={International Symposium on Distributed Computing and Artificial Intelligence},
+  year={2019},
+  url={https://api.semanticscholar.org/CorpusID:195656548}
+}
