@@ -9,7 +9,7 @@ You can see the types in the following image
 - Random generation is done with the help of the OpenCV library
 - Images are placed by the specs of the image
 
-![Specs](/images/Character-position-on-a-license-plate.png)
+![Specs](/image/Character-position-on-a-license-plate.png)
   
 ## The license plates of Korea are as follows.
 ![Table](/table.jpg)
