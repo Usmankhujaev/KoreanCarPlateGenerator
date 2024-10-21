@@ -4,6 +4,15 @@ This project was developed as part of the following research, randomly generatin
 We separated them by type according to their shape and background color.
 You can see the types in the following image
 
+This project was submitted to the DCAI Conference in 2019
+
+| Authors   | Authorship  |  Occupation  |
+|-----------|-------------|-------------|
+| Saidrasul Usmankhujaev  | first author | MS student |
+| Lee Seonwoo | co-author  | Designer    | PhD student |
+| Kwon Jangwoo | corresponding author  | Profesor    |
+
+
 ## Features
 - This project was developed as part of the [Korean License Plate Recognition with Combined Neural Networks](https://www.semanticscholar.org/paper/Korean-License-Plate-Recognition-System-Using-Usmankhujaev-Lee/6e246630e4d6000c8cefcb57110916522db57aea)
 - Random generation is done with the help of the OpenCV library
@@ -11,7 +20,7 @@ You can see the types in the following image
 
 ![Specs](/image/Character-position-on-a-license-plate.png)
   
-## The license plates of Korea are as follows.
+### License plate types in Korea.
 ![Table](/table.jpg)
 
 Please read the [Car plate notification on standards file](https://github.com/Usmankhujaev/KoreanCarPlateGenerator/blob/master/Notification%20on%20standards%20such%20as%20registration%20plates%20for%20Cars.pdf) for detailed legal information.
